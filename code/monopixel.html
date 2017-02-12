@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>{Title}
+		{block:PostTitle}: {PostTitle}{/block:PostTitle}
+		{block:TagPage}: {Tag}{/block:TagPage}
+	</title>
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Description}
+		<meta name="description" content="{MetaDescription}">
+	{/block:Description}
+		<meta name="color:Content" content="#000">
+		<meta name="font:Content" content="Helvetica Neue, Tahoma, Helvetica, Arial, sans-serif">
+		<meta name="image:Background" content="" />
+	<style type="text/css" media="screen">
+		body {
+			background:#FFFFFF url('{image:Background}') fixed;
+			color:{color:Content};
+			font:12px {font:Content};
+			margin:0px;
+			zoom:1;
+		} img, img a {
+			border:0px;
+		} #wrapper {
+			background-color:#FFFFFF;
+			width:800px;
+			height:100%;
+		} a, ol.notes li a {
+			text-decoration:none;
+			color:{color:Content};
+			font-weight:bold;
+		} a:hover {
+			text-decoration:underline;
+		} ul#menu {
+			border-left:1px solid #000000;
+			list-style-type:none;
+			margin:0px 200px 0px;
+			padding:100px 25px 0px;
+			text-transform:uppercase;
+		} ul#menu a, .postcontent a {
+			font-weight:normal;
+		} #menu li {
+			padding-left:0px;
+		} #desctitle {
+			margin:100px 0px 100px 228px;
+			width:500px;
+		} #title {
+			text-transform:uppercase;
+			color:#000000;
+		} #desc {padding-left:25px;
+			opacity:.60; filter: alpha(opacity = 60); zoom:1;
+		} .postwrapper {
+			margin:0px 0px 100px;
+			width:727px;
+		} .sideinfo {
+			border-right:1px solid #000000;
+			padding-top:26px;
+			padding-right:10px;
+			text-align:right;
+			text-decoration:none;
+			width:194px;
+			height:30px;
+		} .sideinfo a, #pagination2 a {
+			opacity:.50; filter: alpha(opacity = 50); zoom:1;
+			font-weight:normal;
+			text-decoration:none;
+		} .sideinfo a:hover, #pagination2 a:hover {
+			opacity:1.0; filter: alpha(opacity = 100); zoom:1;
+			text-decoration:none;
+		} .postcontent {
+			padding-left:28px;
+			margin-left:200px;
+			margin-top:-56px;
+		} .posttitle {
+			text-transform:uppercase;
+			position:absolute;
+			opacity:1.0; filter: alpha(opacity = 100); zoom:1;
+		} .quotesource {
+			text-align:right;
+			opacity:.60; filter: alpha(opacity = 60); zoom:1;
+		} .albumart img {
+			width:207px;
+			margin-bottom:-27px;
+			z-index:-1;
+		} .postbody, .quotesource {
+			padding-top:13px;
+		} .postbody, .linkdesc {
+			opacity:.70; filter: alpha(opacity = 70); zoom:1;
+		} .postbody a, .quotesource a, .linkdesc a {
+			font-weight:bold!important;
+		} .postphoto img {
+			padding-top:0px;
+		} .askerr {
+			position:absolute;
+			margin-top:-26px;
+		} #tags {
+			padding:50px 0px;
+			text-align:right;
+			text-transform:lowercase;
+			margin-right:0px;
+			opacity:.40; filter: alpha(opacity = 40); zoom:1;
+		} .tag+.tag:before {
+			content:", "
+		} ol.notes {
+			border-left:1px solid #000000;
+			list-style-type:none;
+			margin-left:-24px;
+			margin-bottom:-105px;
+			padding-bottom:105px;
+		} ol.notes li {
+			padding-left:0px;
+			margin-left:-17px;
+			opacity:.50; filter: alpha(opacity = 50); zoom:1
+		} .thirty {opacity:.30; filter: alpha(opacity = 30); zoom:1;
+		} .forty {opacity:.40; filter: alpha(opacity = 40); zoom:1;
+		} .fifty {opacity:.50; filter: alpha(opacity = 50); zoom:1;
+		} .sixty {opacity:.60; filter: alpha(opacity = 60); zoom:1;
+		} .seventy {opacity:.70; filter: alpha(opacity = 70); zoom:1;
+		} .eighty {opacity:.80; filter: alpha(opacity = 80); zoom:1;
+		} .evenline {opacity:1.0; filter: alpha(opacity = 100); zoom:1;
+		} .oddline {opacity:.70; filter: alpha(opacity = 70); zoom:1;
+		} .postwrapper2 {
+			margin-bottom:0px;
+			width:704px;
+		} #pagination {
+			padding-bottom:100px;
+		} a.link {
+			text-transform:uppercase;
+			opacity:1.0; filter: alpha(opacity = 100); zoom:1;
+		} .linkdesc {
+			margin-top:0px;
+		}
+		{CustomCSS}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<ul id="menu">
+		<li class="thirty"><a href="http://nimirea.tumblr.com">theme</a></li>
+		<li class="forty"><a href="{RSS}">{lang:RSS}</a></li>
+		<li class="fifty"><a href="/archive">{lang:Archive}</a></li>
+		{block:AskEnabled}<li class="sixty"><a href="/ask">{AskLabel}</li>{/block:AskEnabled}
+		{block:SubmissionsEnabled}<li class="sixty"><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+		{block:HasPages}{block:Pages}<li class="eighty"><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+		<li class="seventy"><a href="/">{lang:Home}</a></li>
+	</ul>
+	<div id="desctitle">
+		<div id="title"><b>{Title}</b>{block:TagPage} | {Tag}{/block:TagPage}</div>
+		{block:Description}<div id="desc" class="seventy">{Description}</div>{block:Description}
+	</div>
+	{block:Posts}
+	<div class="postwrapper">
+		<div class="sideinfo">{block:IndexPage}<a href="{Permalink}">{/block:IndexPage}
+			{block:Date}{TimeAgo}</br>{/block:Date}
+			&#8756; {block:NoteCount}{NoteCount}{/block:NoteCount}{block:IndexPage}</a>{/block:IndexPage}
+		</div>
+		<div class="postcontent">
+		{block:Text}
+			<div class="posttitle"> {block:Title}{Title}{/block:Title}</div>
+			<div class="postbody">{Body}</div>
+		{/block:Text}
+		{block:Photo}
+			<div class="postphoto">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" />{LinkCloseTag}</div>
+		{/block:Photo}
+		{block:Photoset}
+			<div class="postphoto">{Photoset-500}</div>
+			{block:Caption}<div class="postbody">{Caption}</div>{/block:Caption}
+		{/block:Photoset}
+		{block:Quote}
+			<div class="quotetitle">{Quote}</div>
+			{block:Source}<div class="quotesource">{Source}</div>{/block:Source}
+		{/block:Quote}
+		{block:Link}
+			<a href="{URL}" class="link" {Target}>&#8756; {Name}</a>
+			{block:Description}<div class="linkdesc" class="postbody">{Description}</div>{/block:Description}
+		{/block:Link}
+		{block:Chat}
+			<div class="posttitle"> {block:Title}{Title}{/block:Title}</div>
+			<div class="postbody" style="padding-top:26px;">{block:Lines}<div class="{Alt}line">{block:Label}{Label}{/block:Label} {Line}</div>{/block:Lines}</div>
+		{/block:Chat}
+		{/block:Audio}
+			<div class="postphoto">
+				{block:AlbumArt}<div class="albumart"><img src="{AlbumArtURL}" /></div>{/block:AlbumArt}
+				{AudioPlayerGrey}
+			</div>
+			<div class="postbody">
+				{block:Caption}{Caption}{/block:Caption}
+			</div>
+		{/block:Audio}
+		{block:Video}<div class="video">
+			{Video-500}</div>
+		{/block:Video}
+		{block:Answer}
+			<div class="posttitle" class="askerr">{Asker}:</div>
+			<div class="postbody">
+				<blockquote>{Question}</blockquote>
+			{Answer}</div>
+		{/block:Answer}
+		{block:PermalinkPage}
+			{block:HasTags}<div id="tags">{Lang:Filed under}:</br>
+				{block:Tags}<span class="tag"><a href="{TagURL}">{Tag}</a></span>{/block:Tags}
+			</div>{/block:HasTags}
+		{/block:PermalinkPage}
+		{block:PostNotes}{PostNotes}{/block:PostNotes}
+		</div>
+	</div>
+	{/block:Posts}
+	{block:Pagination}
+	<div class="postwrapper2">
+	{block:NextPage}
+		<div class="sideinfo" id="pagination"><a href="{NextPage}">OLDER</a></div>
+	{/block:NextPage}
+	{block:PreviousPage}
+		<div class="postcontent"><div id="pagination2"><a href="{PreviousPage}">NEWER</a></div></div>
+	{/block:PreviousPage}
+	</div>
+	{/block:Pagination}
+</div>
+</body>
+</html>

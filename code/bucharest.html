@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>&laquo; {Title} &raquo;</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+    <!-- CUSTOM COLORS -->
+        <meta name="color:Background" content="#949491"/>
+        <meta name="color:Link" content="#534b58"/>
+        <meta name="color:Post background" content="#F0F0F0"/>
+        <meta name="color:Title" content="#F0F0F0"/>
+        <meta name="color:Description" content="#F0F0F0"/>
+        <meta name="color:Post top bar" content="#bbb9af"/>
+        <meta name="color:Text" content="#000000"/>
+        <meta name="font:Title" content="Baskerville, Georgia, serif" />
+        <meta name="font:Description" content="Baskerville, Georgia, serif" />
+        <meta name="font:Text" content="Baskerville, Georgia, serif" />
+        <meta name="text:Title Size" content="100" />
+        <meta name="text:Title Letterspacing" content="0" />
+        <meta name="if:Fixed title" content="1" />
+        <meta name="if:Italicize title" content="1" />
+    <style type="text/css">
+        body {
+            margin:0px;
+            background-color:{color:Background};
+        } .header {
+            {block:ifFixedTitle}position:fixed;{/block:ifFixedTitle}
+            top:0px;
+            width:100%;
+            z-index:9999;
+            background-color:{color:Background};
+        } a {
+            color:{color:Link};
+        } div.title, a.title {
+            color:{color:Title}!important;
+            font:{block:IfItalicizeTitle}italic{/block:IfItalicizeTitle} 100px {font:Title};
+            {block:ifTitleSize}font-size:{text:TitleSize}px; {/block:ifTitleSize}
+            letter-spacing:-10px;
+            {block:ifTitleLetterspacing}letter-spacing:{text:TitleLetterspacing}px;{/block:ifTitleLetterspacing}
+            padding-top:40px;
+            padding-bottom:0px;
+            text-align:center!important;
+            text-decoration: overline;
+            text-transform:uppercase;
+        } div#navbar {
+            color:{color:Description};
+            font:italic 14px {font:Title};
+            padding:15px 0px;
+            border-top:solid 1px {color:Description};
+            border-bottom:solid 1px {color:Description};
+            width:500px;
+            margin:0 auto;
+            text-align:center;
+            text-transform:uppercase;
+        } div#description, div#credit {
+            color:{color:Description};
+            font:14px {font:Description};
+            padding:30px 0px;
+        } #contents {
+            z-index:0;
+            width:500px;
+            margin:0 auto;
+            position:relative;
+            {block:ifFixedTitle}top:205px;{/block:ifFixedTitle}
+        } .post {
+            margin-top:10px;
+            background-color: {color:Post background};
+            color: {color:Text};
+            padding:20px 25px;
+            font: 12px {font:Text};
+        } .posttop {
+            width:480px;
+            background-color:{color:Post top bar};
+            color:{color:Post background};
+            margin-top:-20px;
+            margin-left:-25px;
+            text-transform:uppercase;
+            text-align:center;
+            font: 14px {font:Description};
+            padding:10px;
+        } .posttop a, #navbar a, a.title {
+            text-decoration:none;
+            color:inherit;
+        } a:hover{
+            text-decoration:underline!important;
+        } .postbody {
+            padding-top:20px;
+        } .postbody .tittle {
+            font:bold 16px {font:Description};
+            text-align:center;
+            text-transform:uppercase;
+        } .postbody blockquote {
+            border-left:solid 2px {color:Background};
+            padding-left:10px;
+            margin-left:27px;
+        } .photo img, .video .tittle, .video, .audio, .photo .tittle {
+            margin-top:-20px;
+            margin-left:-25px;
+            width:500px;
+            z-index:0!important;
+        } .quote .tittle {
+            text-transform:none;
+            padding-bottom:20px;
+        } .label {
+            text-align:right;
+            font-style:italic;
+        } a.title:hover {text-decoration:none!important;
+        } ol.notes {
+            list-style-type:none;
+            margin-top:-20px;
+            padding:0px;
+        } .audio .tittle, .video .tittle {
+            z-index:0!important;
+        } #arrowright {
+            margin-left:50px;
+        } #credit {
+            color:{color:Background}!important;
+        } {CustomCSS}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">{Title}</div>
+        <div id="navbar">
+            <a href="/">{lang:Home}</a> -
+            {block:HasPages}
+                {block:Pages}<a href="{URL}">{Label}</a> - {/block:Pages}
+            {/block:HasPages}
+            {block:AskEnabled}<a href="/ask">{AskLabel}</a> - {/block:AskEnabled}
+            {block:SubmissionsEnabled}<a href="/submit">{SubmitLabel}</a> - {/block:SubmissionsEnabled}
+            <a href="/archive">{lang:Archive}</a> -
+            <a href="RSS">{lang:RSS}</a>
+        </div>
+    </div>
+    <div id="contents">
+        <div id="description">{block:Description}{Description}{/block:Description}</div>
+        {block:Posts}<div class="post">
+            <div class="posttop">
+                &laquo; {block:Date}<a href="{Permalink}">{PostType}</a> | <a href="/day/{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}">{DayOfMonthWithZero}-{MonthNumberWithZero}-{Year}</a> {/block:Date}&raquo;
+            </div>
+            <div class="postbody"><span class="{PostType}">
+                {block:Text}
+                    <div class="tittle">{block:Title}{Title}{/block:Title}</div>
+                    {Body}
+                {/block:Text}
+                {block:Photo}
+                    {LinkOpenTag}<img src="{PhotoURL-500}" {PhotoAlt}>{LinkCloseTag}
+                    {block:Caption}{Caption}{/block:Caption}
+                {/block:Photo}
+                {block:Photoset}
+                    <div class="tittle">{Photoset-500}</div>
+                    {block:Caption}{Caption}{/block:Caption}
+                {/block:Photoset}
+                {block:Quote}
+                    <div class="tittle"><i>&bdquo;{Quote}&rdquo;</i></div>
+                    {block:Source}&mdash;{Source}{/block:Source}
+                {/block:Quote}
+                {block:Link}
+                    <div class="tittle"><i><a href="{URL}" target="{Target}">{Name}</a></i></div>
+                    {block:Description}{Description}{/block:Description}
+                {/block:Link}
+                {block:Chat}
+                    {block:Title}<div class="tittle">{Title}</div>{/block:Title}
+                    {block:Lines}
+                        <div class="label">{block:Label}{Label}{/block:Label}</div>
+                        &mdash; {Line}
+                    {/block:Lines}
+                {/block:Chat}
+                {block:Audio}
+                    <div class="tittle">{AudioPlayer}</div>
+                    {block:Caption}{Caption}{/block:Caption}
+                {/block:Audio}
+                {block:Video}
+                    <div class="tittle">{Video-500}</div>
+                    {block:Caption}{Caption}{/block:Caption}
+                {/block:Video}
+            </span></div>
+        </div>{/block:Posts}
+        {block:PostNotes}
+            <div class="post"><div class="postbody">
+                {PostNotes}
+            </div></div>
+        {/block:PostNotes}
+        {block:Pagination}
+            {block:NextPage}
+                <a href="{NextPage}" title="{lang:Older entries}" class="title">&laquo;</a>
+            {/block:NextPage}
+            {block:PreviousPage}
+            <a href="{PreviousPage}" title="{lang:Newer entries}" class="title"><span id="arrowright"> &raquo;</div></a>
+        {/block:PreviousPage}
+        {/block:Pagination}
+        <div id="credit">bucharest theme by nimirea</div>
+    </div>
+</body>
+</html>

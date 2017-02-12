@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<link rel="shortcut icon" href="{Favicon}" />
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+
+	<title>
+	{Title}
+	{block:PostTitle} / {PostTitle}{/block:PostTitle}
+	{block:TagPage} / {Tag}{/block:TagPage}
+	</title>
+
+	<!-- DEFAULT COLORS -->
+	<meta name="color:Ink" content="#000000"/>
+        <meta name="color:Highlighter" content="#ffff00"/>
+
+
+	<style type="text/css" media="screen">
+		html, body {
+			background-image: url("http://static.tumblr.com/cfbevoa/68bl23chy/2338077775_89d903381a_b.jpg");
+			background-repeat: repeat;
+			font-family:Times New Roman, Times, serif;
+			margin:0;
+		} img {
+			border:0px;
+		} ul, ol {
+			list-style-position:inside;
+		} a {
+			color:inherit;
+			text-decoration:underline;
+		} a:hover {
+			background-color:{color:Highlighter};
+		} #rightarrow a , #leftarrow a {
+			text-align:center;
+			margin:0 auto;
+			padding-bottom:50px;
+			background-color:transparent;
+		} #rightarrow {
+			float:right;
+		} #leftarrow {
+			float:left;
+		} .notworktop {
+			background-color:#FFFFFF;
+			border-bottom: solid 20px {color:Highlighter};
+			box-shadow:inset 0px 0px 15px #000000;
+			-moz-box-shadow:inset 0px 0px 15px #000000;
+			-webkit-box-shadow:inset 0px 0px 15px #000000;
+			font-family:Courier New, American Typewriter, Courier, Monaco, Sans-Serif;
+			padding-top:20px;
+			padding-bottom:10px;
+			text-align:right;
+			width:100%;
+			z-index:-100;
+		} h1 {
+			background-color:transparent;
+			color:#9F9F9F;
+			font-size:70px;
+			font-weight:500;
+			letter-spacing:30px;
+			text-decoration:none;
+			text-transform:uppercase;
+			padding-bottom:-20px;
+			padding-top:20px;
+			margin-top:0px;
+		} h2 {
+			color:black;
+			font-size:25px;
+			font-weight:400;
+			padding-right:30px;
+			margin-top:-40px;
+		} .linklinks {
+			font-family:Courier New, American Typewriter, Courier, Monaco, Sans-Serif;
+			font-size:14px;
+			padding-top:20px;
+			text-transform:uppercase;
+		} #coffee {
+			float:left;
+			padding:0px;
+			z-index:3;
+		} #allposts {
+			list-style-type:none;
+			margin:0 auto;
+			width:850px;
+		} .post {
+			background-color:#FFFFFF;
+			box-shadow: 2px 2px 3px #000000;
+			-moz-box-shadow: 2px 2px 3px #000000;
+			-webkit-box-shadow: 2px 2px 3px #000000;
+			margin-top:75px;
+			margin-bottom:75px;
+			padding:0px 100px 100px 100px;
+			z-index:2
+		} .text {
+			text-indent:50px;
+		} .heading, h3, .noteheader, .source {
+			text-transform:capitalize;
+			text-indent:0px;
+		} .text, h3, h2.quote, .heading, .noteheader, .source, .quotesource, ol, ul {
+			color:{color:Ink};
+			font-size:14px;
+			font-weight:400;
+			line-height:2;
+		} h3, .centerme {
+			text-align:center;
+		} .centerme {
+			padding-top:12px;
+			padding-bottom:12px;
+		} blockquote, h2.quote {
+			text-indent:0px!important;
+		} blockquote {
+			padding-left:50px;
+		} h2.quote {
+			padding-left:100px;
+			font-style:italic;
+		} p, h3, h2.quote, blockquote, .heading, ul, ol, li, .source, .quotesource {
+			margin-top:0px;
+			margin-bottom:0px;
+		} .noteheader {
+			text-align:right;
+			padding-top:50px!important;
+		} .cited {
+			margin-left:-50px;
+			padding-left:50px;
+			text-indent:-50px;
+		} .source, .quotesource {
+			text-align:right;
+		} ol.notes {
+			list-style-type:none;
+		} ol.notes li.note {
+			line-height:2;
+		} ol.notes li.note img.avatar {
+			display:none;
+		} ol.notes li.note blockquote {
+			margin-left:-50px;
+		} ol.notes li.note blockquote a {
+			text-decoration: none;
+		} h3#notes {
+			padding-top:100px;
+		} #byline {
+			vertical-align:middle;
+			margin-top:-50px;
+			font-size:20px;
+			font-weight:600;
+			text-align:center;
+			opacity:0.6;
+			color:#000000
+		{CustomCSS}
+
+	</style>
+
+</head>
+
+
+
+<body>
+<img id="coffee" src="http://static.tumblr.com/cfbevoa/Nd2l258yw/all-nighter_coffee-cup.png"/>
+<div class="notworktop">
+<a href="/"><h1>{Title}</h1></a>
+<h2 id="description">{block:Description}{Description}{/block:Description}
+<div class="linklinks">
+	{block:HasPages}
+		{block:Pages}<a href="{URL}">{Label}</a> : {/block:Pages}
+	{/block:HasPages}
+	<a href="/archive">archive</a> :
+	{block:AskEnabled}<a href="/ask">{AskLabel}</a> : {/block:AskEnabled}
+	<a href="/mobile">mobile</a> :
+	<a href="/random">random</a> :
+	<a href="{RSS}">rss</a>
+	{block:SubmissionsEnabled} : <a href="/submit">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+
+	{block:TagPage}<p class="linklinks">
+	/ You are on the <a href="{TagURL}">{Tag}</a> page.</p>
+	{/block:TagPage}
+</div></h2>
+</div>
+
+
+<div id="allposts">
+{block:Posts}
+	{block:Text}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		{block:Title}
+			<h3>{Title}</h3>
+		{/block:Title}
+		<div class="text">{Body}</div>
+	</div>
+	{/block:Text}
+
+
+	{block:Photo}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<div class="centerme">{LinkOpenTag}
+			<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+		{LinkCloseTag}</div>
+		{block:Caption}
+			<div class="text">{Caption}</div>
+		{/block:Caption}
+	</div>
+	{/block:Photo}
+
+
+	{block:Photoset}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<div class="centerme">{Photoset-500}</div>
+		{block:Caption}
+			<div class="text">{Caption}</div>
+		{/block:Caption}
+	</div>
+	{/block:Photoset}
+
+
+	{block:Quote}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<h2 class="quote">{Quote}</h2>
+		{block:Source}
+			<p class="quotesource">({Source})</p>
+		{/block:Source}
+	</div>
+	{/block:Quote}
+
+
+	{block:Link}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<h3>&rarr; <a href="{URL}" {Target}>{Name}</a></h3>
+		{block:Description}
+			<div class="text">{Description}</div>
+		{/block:Description}
+	</div>
+	{/block:Link}
+
+
+	{block:Audio}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<div class="centerme">{AudioPlayerBlack}</div>
+		{block:Artist}<p class="source">({Artist})</p>{/block:Artist}
+		{block:Caption}
+			<div class="text">{Caption}</div>
+		{/block:Caption}
+	</div>
+	{/block:Audio}
+
+
+	{block:Video}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+		<div class="centerme">{Video-500}</div>
+		{block:Caption}
+			<div class="text">{Caption}</div>
+		{/block:Caption}
+	</div>
+	{/block:Video}
+
+
+
+
+	{block:Chat}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>			<h3>{Title}</h3>
+		<div class="text">
+			{block:Lines}
+					<p>{block:Label}<strong>{Label}</strong>{/block:Label}
+				{Line}</p>
+			{/block:Lines}
+		</div>
+	</div>
+	{/block:Chat}
+
+	{block:Answer}
+	<div class="post">
+		<div class="noteheader">Notes <a href="{Permalink}">{NoteCount}</a></div>
+		<div class="heading">
+			<p><a href="{PostAuthorURL}">{PostAuthorName}</a></p>
+			{block:HasTags}
+				<p>{block:Tags}<a href="{TagURL}">{Tag}</a> {/block:Tags}</p>
+			{/block:HasTags}
+			{block:Date}
+				<p>{DayOFMonth} {Month} {Year}</p>
+			{/block:Date}
+		</div>
+			<h2 class="quote">{Question}</h2>
+			<p class="source">({Asker})</p>
+			<div class="text">{Answer}</div>
+	</div>
+	{/block:Answer}
+
+{/block:Posts}
+
+
+
+{block:PostNotes}
+<div class="post">
+	<h3 id="notes">Notes</h3>
+	<div class="cited">{PostNotes}</div>
+</div>
+{/block:PostNotes}
+
+{block:Pagination}
+	{block:PreviousPage}<div id="rightarrow"><a href="{PreviousPage}"><img src="http://static.tumblr.com/cfbevoa/Qe7l2hw5h/all-nighter_rightarrow.png" alt="Newer Posts"></a></div>{/block:PreviousPage}
+{/block:Pagination}
+<div class="linklinks"><div id="byline"><a href="http://tumblr.com/theme/9998">all-nighter theme</a></div></div>
+{block:Pagination}
+	{block:NextPage}<div id="leftarrow"><a href="{NextPage}"><img src="http://static.tumblr.com/cfbevoa/6PAl2hw50/all-nighter_leftarrow.png" alt="Older Posts"></a></div>{/block:NextPage}
+{/block:Pagination}
+
+
+</div>
+
+
+
+
+
+</body>
+
+</html>

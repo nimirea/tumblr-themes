@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" />
+  <head>
+    <meta charset = "utf-8" />
+    <link rel="shortcut icon" href="{Favicon}" />
+    {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+    <meta name="color:Navbar Color" content="#FFF"/>
+    <meta name="color:Link Posts" content="#000"/>
+    <meta name="color:Quote Posts" content="#02B0F5"/>
+    <meta name="color:Chat Label Color" content="#B23EFA"/>
+    <meta name="if:Show Note Counts" content="0"/>
+    <meta name="if:Show Tags On Index Pages" content="1"/>
+    <meta name="if:Shadow On Navbar" content="1"/>
+    <meta name="text:Website URL" content=""/>
+    <meta name="text:Github Username" content=""/>
+    <meta name="text:Twitter Username" content=""/>
+    <meta name="text:Footer" content=""/>
+
+    <title>{Title}</title>
+
+    <style>
+    body {
+    	color:black;
+    	font:12px Monaco, Courier New, Courier;
+    	text-align:left;
+    	margin:0;
+    	width:100%;
+    	height:100%;
+    }
+    a {
+    	color:inherit;
+    	text-decoration:underline;
+    }
+    #left_arrow a, #right_arrow a, #right_arrow a:hover, #left_arrow a:hover {
+        text-decoration:none;
+        font-size:80px;
+        z-index:3;
+        margin-top:-10px;
+        color:black;
+        background-color:white;
+    }
+    .post .txt a, #nav a, #footer a {
+    	padding:3px;
+    }
+    a:hover {
+    	color:white;
+    	background-color:black;
+    }
+
+    /* custom link hover colors */
+    a.rss:hover { background-color: #FFA526; }
+    a.ask:hover { background-color: #878787; }
+    a.github:hover { background-color: #B963DB; }
+    a.twitter:hover { background-color: #55ACEE; }
+    a.website:hover { background-color: green; }
+
+    #left_arrow {
+        float:left;
+        padding-left:20px;
+    }
+    #right_arrow {
+        float:right;
+        padding-right:20px;
+    }
+    #header {
+    	text-align:center;
+        margin:0 auto;
+    	width:100%;
+    	position:fixed;
+    	top:-1px;
+    	background-color:white;
+    	text-transform:lowercase;
+    	z-index:2;
+    }
+    #title a, #title {
+    	font-size:24px;
+    	padding:6px;
+    	text-decoration:none;
+        font-weight:bold;
+    }
+    #subtitle {
+    	color: #878787;
+    } #nav {
+        padding:6px;
+        margin-top:6px;
+        background-color:{color:Navbar Color};
+        {block:ifShadowOnNavbar}box-shadow:0px 5px 10px -5px rgba(0,0,0,0.3);{/block:ifShadowOnNavbar}
+    }
+    #main {
+    	position:relative;
+    	top:150px;
+    	z-index:1;
+        height=100%;
+    }
+    #tag_title{
+        font-size:20px;
+        z-index:-1;
+        float:left;
+        position:fixed;
+        margin:120px 10px;
+        color:#DEDEDE;
+        width:100px;
+    }
+    .post {
+    	max-width:420px;
+    	margin:0 auto;
+    	padding:10px;
+    	color:#878787;
+        padding-bottom:70px;
+    }
+    .post a:hover {
+    	background-color:#878787;
+    }
+    .post img {
+        width:100%;
+    }
+    blockquote {
+        border-left: 1px solid #878787;
+        margin-left:10px;
+        padding-left:10px;
+    }
+    .quote {
+        color: #FFFFFF;
+        font-size:20px;
+        padding:0.5em;
+        margin-bottom:8px;
+        background-color:{color:Quote Posts};
+    }
+    .quote.medium {font-size:16px;}
+    .quote.long { font-size:14px; }
+    .quest, .link a {
+    	background-color:black;
+    	color:white;
+    }
+    span.chat-label {
+        color:white;
+        padding:.3em;
+        font-size:0.75em;
+        display:inline-block;
+        background-color:{color:Chat Label Color};
+    }
+    .link {
+    	text-align:center;
+        font-weight:bold;
+    	font-size:20px;
+    	text-transform:lowercase;
+        color:black;
+    }
+    .link a {
+    	padding:8px;
+    	width:auto;
+    	background-color:{color:Link Posts};
+    	line-height:36px;
+    }
+    .link:hover, .link a:hover, img a:hover{
+    	background-color:white;
+    	color:black;
+    	text-decoration:none;
+    }
+    .date p {
+    	font-size:10px;
+    	text-transform:lowercase;
+    	margin:2px 0;
+    }
+    .date a {
+        display:inline-block;
+        padding: 2px 4px;
+    }
+    ol.notes {
+        list-style-type:none;
+        color:#BABABA;
+        font-size:10px;
+        padding-left:0;
+    }
+    ol.notes li.note {
+        padding:2px;
+    }
+    ol.notes li.note img.avatar {
+        display:none;
+    }
+    #footer {
+        position:relative;
+        right:5px;
+        bottom:-110px;
+    }
+    #footer, .date {
+    	color:#BABABA;
+    	text-align:right;
+    	padding:10px;
+    }
+    #footer a:hover, .date a:hover, .notes a:hover {
+    	background-color:#BABABA;
+    	color:white;
+    }
+
+    {CustomCSS}
+
+    </style>
+
+    <script type="text/javascript" src="http://codysherman.com/tools/infinite-scrolling/code" ></script>
+
+  </head>
+
+  <body>
+    <div id="header">
+
+        <div id="title"><a href="/">{Title}</a></div>
+        {block:Description}<div id="subtitle">{Description}</div>{/block:Description}
+        <div id="nav">
+            {block:HasPages}
+                {block:Pages}<a href="{URL}" class="{Label}">{Label}</a> {/block:Pages}
+            {block:HasPages}
+            {block:AskEnabled}<a href="/ask" class="ask">{AskLabel}</a>{/block:AskEnabled}
+            <a href="{RSS}" class="rss">RSS</a>
+            {block:ifGithubUsername}
+                <a href="http://github.com/{text:Github Username}" class="github">github</a>
+            {/block:ifGithubUsername}
+            {block:ifTwitterUsername}
+                <a href="http://twitter.com/{text:Twitter Username}" class="twitter">twitter</a>
+            {/block:ifTwitterUsername}
+            {block:ifWebsiteURL}
+                <a href="{text:WebsiteURL}" class="website">www</a>
+            {/block:ifWebsiteURL}
+        </div>
+    </div>
+
+    <div id="main">
+
+        {block:TagPage}<div id="tag_title">#{Tag}</div>{/block:TagPage}
+
+        {block:Posts}<div class="post">
+            {block:Text}
+            {block:Title}<div class="link">{Title}</div>{/block:Title}
+                <div class="txt">{Body}</div>
+            {/block:Text}
+
+            {block:Photo}
+                {LinkOpenTag}<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>{LinkCloseTag}
+                {block:Caption}<div class="txt">{Caption}</div>{/block:Caption}
+            {/block:Photo}
+
+            {block:Photoset}
+                {Photoset-400}
+                {block:Caption}<div class="txt">{Caption}</div>{/block:Caption}
+            {/block:Photoset}
+
+            {block:Quote}
+                <div class="quote {Length}">{Quote}</div>
+                {block:Source}<div class="txt">&mdash;{Source}</div>{/block:Source}
+            {/block:Quote}
+
+            {block:Chat}
+            {block:Title}<div class="link">{Title}</div>{/block:Title}
+                {block:Lines}<p class="chat-line">{block:Label}<span class="chat-label">{Label}</span>{/block:Label} {Line}</p>{/block:Lines}
+            {/block:Chat}
+
+            {block:Audio}
+                {block:AudioEmbed}{AudioEmbed-400}{/block:AudioEmbed}
+                {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
+                {block:Caption}<div class="txt">{Caption}</div>{/block:Caption}
+            {/block:Audio}
+
+            {block:Video}
+                {Video-400}
+                {block:Caption}<div class="txt">{Caption}</div>{/block:Caption}
+            {/block:Video}
+
+            {block:Link}
+                <div class="link"><a href="{URL}" {Target}>{Name}</a></div>
+                {block:Description}<div class="txt">{Description}</div>{/block:Description}
+            {/block:Link}
+
+            {block:Ask}
+                <p>{Asker}: <span class="quest">{Question}</span></p>
+                <div class="txt">{Answer}</div>
+            {/block:Ask}
+
+            {block:Date}<div class="date"><p><a href="{Permalink}">{DayOfMonthWithZero}{ShortMonth}{ShortYear} @ {12Hour}.{Minutes}{AmPm}</a>
+            {block:ifShowNoteCounts}{block:NoteCount} || {NoteCountWithLabel}{/block:NoteCount}{/block:ifShowNoteCounts}</p>
+
+            {block:PermalinkPage}{block:HasTags}<p>{block:Tags} <a href="{TagURL}">#{Tag}</a>{/block:Tags}</p>{/block:HasTags}{/block:PermalinkPage}
+            {block:ifShowTagsOnIndexPages}{block:IndexPage}{block:HasTags}<p>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</p>{/block:HasTags}{/block:IndexPage}{/block:ifShowTagsOnIndexPages}
+
+
+            </div>{/block:Date}
+
+            {block:PostNotes}{PostNotes}{/block:PostNotes}
+
+        </div>{/block:Posts}
+
+    </div>
+    <div id="footer">{block:ifFooter}{text:Footer}{/block:ifFooter}</div>
+  </body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<title>{Title}</title>
+<link rel="shortcut icon" href="{Favicon}">
+<link rel="alternate" type="application/rss+xml" href="{RSS}">
+<meta name="description" content="{MetaDescription}" />
+
+<meta name="image:Background" content="http://static.tumblr.com/cfbevoa/Qwjlmlj86/_mg_0383.jpg"/>
+<meta name="image:Logo"/>
+<meta name="font:Titles" content="Georgia, Baskerville, serif"/>
+<meta name="font:Description" content="Georgia, Baskerville, serif"/>
+<meta name="font:Navigation" content="Helvetica Neue, Helvetica, Arial, sans-serif"/>
+<meta name="font:Body" content="Helvetica Neue, Helvetica, Arial, sans-serif"/>
+<meta name="color:Background" content="#85A5AD"/>
+<meta name="color:Blog Title" content="#404040"/>
+<meta name="color:Blog Title shadow" content="#e5e5ee"/>
+<meta name="color:Description" content="#404040"/>
+<meta name="color:Post Title" content="#404040"/>
+<meta name="color:Text" content="#404040"/>
+<meta name="color:Links" content="#000000"/>
+<meta name="color:Navigation Links" content="#404040"/>
+<meta name="color:Navigation Links Hover" content="#e5e5ee"/>
+<meta name="if:Underline links on mouseover" content="1"/>
+<meta name="if:Show note counts" content="0"/>
+<meta name="if:Show RSS link" content="1"/>
+<meta name="if:Show link to random post" content="0"/>
+
+<style type="text/css">
+body {background:{color:Background} url('{image:Background}') fixed; text-align:center;
+
+} a, a:visited {
+    text-decoration:none;
+    color:{color:Links};
+{block:ifUnderlineLinksOnMouseover}} a:hover {text-decoration:underline{/block:ifUnderlineLinksOnMouseover}
+} img {
+    border:none;
+    -moz-outline-style:none;
+} blockquote {
+    font-style:italic;
+} .header {
+    color:{color:Description};
+} #footer {
+    margin:30px;
+    font:bolder 10px {font:Navigation};
+    color:#787878;
+} .title, .title a {
+    color:{color:Blog Title};
+    font: italic bold 60px {font:Titles};
+    {block:IfNotLogoImage}margin-top:210px;{/block:IfNotLogoImage}
+    text-shadow: 0px 1px 0px #e5e5ee;
+    filter: Shadow(Color=#e5e5ee,
+                 Direction=135,
+                 Strength=5);
+    text-align:center;
+    padding-top:40px;
+} .title a:hover {text-decoration:none
+} #descrip {
+    padding-top:15px;
+    font: italic 500 14px {font:Description};
+} .nav {
+    list-style-type:none;
+    margin-left:-40px;
+    width:100%!important;
+} .nav li {
+    display: inline;
+    padding:0px auto;
+} .nav li a, .nav li a:visited, #footer a {
+    text-transform:uppercase;
+    text-shadow: 0px 1px 0px {color:Navigation Links Hover};
+} .nav li a:link, .nav li a:visited {
+    font: bold 16px {font:Navigation};
+    padding:5px;
+    color: {color:Navigation Links};
+} .nav li a:hover, #footer a:hover{
+    color:{color:Navigation Links Hover};
+    text-shadow: 0px -1px 0px {color:Navigation Links};
+    text-decoration:none;
+} .nav li+li:before{content:"//";
+    vertical-align:middle;
+    color:#666666;
+    font-size:40px;
+} .post {
+    display:block;
+    width:710px;
+    background-color:#F5F5F5;
+    margin: 0 auto;
+    -moz-box-shadow: 3px 3px 4px #404040;
+    -webkit-box-shadow: 3px 2px 3px #404040;
+    box-shadow: 3px 2px 3px #404040;
+    padding:0px;
+    text-align:left;
+    font: 12px {font:Body};
+    color:{color:Text};
+    margin-bottom:30px;
+} .postcontent {
+    width:650px;
+    padding:30px;
+    margin-right:-30px;
+} .posttitle {
+    font: italic bold 25px Georgia,serif;
+    color:#404040!important;
+} .photo img, .audiowrapper {
+    width:710px;
+    text-align:left;
+    background-color:black;
+    color:white;
+    margin-top: -30px;
+    margin-left: -30px;
+    margin-bottom: 15px;
+    padding-right:0px;
+    height:auto;
+} .quotesource {
+    text-align:right;
+} .chatlabel {
+    color:black;
+    padding-top:15px;
+} .line+.chatlabel {
+    padding-top:0px;
+} .line {padding-left:20px;
+}.permalink a{
+    color:#f5f5f5;
+    font:bolder 14px Helvetica Neue, Helvetica, Arial, sans-serif;
+    text-shadow: 0px 0px 6px #000000;
+} .permalink {
+    text-align:right;
+    padding-bottom:25px;
+    {block:ifShowNoteCounts}padding-bottom:20px;{/block:ifShowNoteCounts}
+    margin-right:30px;
+    margin-top:-30px;
+} .infinity {
+    font-size:30px;
+    font-weight:normal;
+    vertical-align:middle;
+    text-decoration:none;
+    margin-bottom:-25px;
+} ol.notes {
+    list-style-type:none;
+    padding:30px;
+} .video {
+    text-align:center;
+} #footer a {color:#787878;
+} #footer .nav a, #footer .nav {margin-bottom:-5px; color:{color:Navigation Links}
+} #footer .nav a:hover {color:{color:Navigation Links Hover}}
+<!--[if IE]>
+.permalink, .permalink a, .permalink a:visited, .permalink a:hover, .permalink a:active {color:{color:Links}}
+.nav {margin-left:0px;}
+<![endif]-->
+
+{CustomCSS}
+</style>
+</head>
+<body>
+
+
+<div class="header">
+{block:ifLogoImage}<img src="{image:Logo}"/>{/block:ifLogoImage}
+<div class="title"><a href="/">{Title}</a></div>
+{block:Description}<div id="descrip">{Description}</div>{/block:Description}
+<ul class="nav">
+{block:HasPages}
+   {block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+{/block:HasPages}
+{block:ifShowLinkToRandomPost}<li><a href="/random">{lang:Random post}</a></li>{/block:ifShowLinkToRandomPost}
+{block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+<li><a href="/archive">{lang:Archive}</a></li>
+{block:ifShowRSSLink}<li><a href="{RSS}">{lang:Feed}</a></li>{/block:ifShowRSSLink}
+</ul>
+</div>
+
+{block:Posts}
+<div class="post">
+<div class="postcontent">
+{block:Text}
+  {block:Title}<div class="posttitle">{Title}</div>{/block:Title}
+  {Body}
+{/block:Text}
+
+{block:Photo}
+  <div class="photo">{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">{LinkCloseTag}</div>
+  {block:Caption}{Caption}{/block:Caption}
+{/block:Photo}
+
+{block:Quote}
+  <div class="posttitle">&#8220;{Quote}&#8221;</div>
+  <div class="quotesource">{block:Source}{Source}{/block:Source}</div>
+{/block:Quote}
+
+{block:Link}
+  <u><a href="{URL}" {Target}><div class="posttitle">{Name}</div></a></u>
+  {block:Description}{Description}{/block:Description}
+{/block:Link}
+
+{block:Chat}
+  {block:Title}<div class="posttitle">{Title}</div>{/block:Title}
+  {block:Lines}{block:Label}<div class="chatlabel">{Label}</div>{/block:Label} <div class="line">{Line}</div>{/block:Lines}
+{/block:Chat}
+
+{block:Audio}
+<div class="audiowrapper">{AudioPlayerBlack}</div>
+{block:Caption}{Caption}{/block:Caption}
+{/block:Audio}
+
+{block:Video}
+  <div class="photo"><div class="video">{Video-500}</div></div>
+  {block:Caption}{Caption}{/block:Caption}
+{/block:Video}
+{block:Photoset}
+  <div class="photo">{Photoset-500}</div>
+  {block:Caption}{Caption}{/block:Caption}
+{/block:Photoset}
+
+{block:Answer}
+  <div class="chatlabel">{Asker}:</div>
+  <div class="line">{Question}</div>
+  <div class="chatlabel">{lang:Answer}:</div>
+  <div class="line">{Answer}</div>
+{/block:Answer}
+</div>
+{block:IndexPage}<div class="permalink"><a href="{Permalink}" alt="{lang:Permalink for this post}"><div class="infinity">&#8734;</div></br>{block:IfShowNoteCounts}{block:NoteCount}{NoteCount} {/block:NoteCount}{/block:IfShowNoteCounts}</a>
+</div>{/block:IndexPage}
+</div>
+{/block:Posts}
+</div>
+
+{block:PostNotes}
+<div class="post">{PostNotes}</div>
+{/block:PostNotes}
+
+<div id="footer">
+{block:Pagination}
+<ul class="nav">
+  {block:NextPage}<li><a href="{NextPage}">{lang:Older}</a></li>{/block:NextPage}
+  {block:PreviousPage}<li><a href="{PreviousPage}">{lang:Newer}</a></li>{/block:PreviousPage}
+</ul>
+{/block:Pagination}
+</br></div>
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{Title}
+		{block:PostTitle}: {PostTitle}{/block:PostTitle}
+	</title>
+	<link rel="shortcut icon" href="{Favicon}">
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">
+	{block:Description}
+		<meta name="description" content="{MetaDescription}"/>
+
+		<meta name="image:Background" content=""/>
+        <meta name="image:Header" content=""/>
+
+		<meta name="font:Body" content="Courier New,Futura, Helvetica Neue"/>
+		<meta name="font:Titles" content="Courier New,Futura, Helvetica Neue"/>
+		<meta name="font:Bar" content="Courier New,Futura, Helvetica Neue"/>
+
+		<meta name="if:Rollover color by post type" content="1"/>
+		<meta name="if:Rollover color by reblog" content="0"/>
+		<meta name="if:Keep background of posts with your special tag opaque" content="0"/>
+		<meta name="if:Fade transitions" content="1"/>
+		<meta name="if:Transparent header background" content="0"/>
+		<meta name="if:Show tags on index pages" content="0"/>
+
+		<meta name="text:Maximum Post Width" content="600px"/>
+
+		<meta name="color:Text Color" content="#000000"/>
+		<meta name="color:Text Rollover Color" content="#FFFFFF"/>
+		<meta name="color:Bar Background" content="#000000"/>
+		<meta name="color:General Background" content="#FFFFFF"/>
+		<meta name="color:Header Background" contetn="transparent"/>
+		<meta name="color:Fallback Post Background" content="#000000"/>
+
+		<meta name="color:Text Post Background" content="#E97F02"/>
+		<meta name="color:Photo Post Background" content="#e4afd4"/>
+		<meta name="color:Quote Post Background" content="#84114A"/>
+		<meta name="color:Link Post Background" content="#26AAE3"/>
+		<meta name="color:Chat Post Background" content="#FC191D"/>
+		<meta name="color:Audio Post Background" content="#8A9B0F"/>
+		<meta name="color:Video Post Background" content="#3DA6AC"/>
+		<meta name="color:Answer Post Background" content="#FBB829"/>
+
+		<meta name="color:Reblog Post Background" content="#BABABA"/>
+		<meta name="color:Special Tag Background" content="#F0F0F0"/>
+		<meta name="text:Special Tag Name" content="no_spaces_must_start_with_letter"/>
+
+
+
+
+
+
+
+	{/block:Description}
+
+	<style type="text/css" media="screen">
+		body {
+			background:{color:General Background}{block:IfBackgroundImage} url({image:Background}) no-repeat fixed center{/block:IfBackgroundImage};
+			background-size:cover;
+			color:{color:Text Color};
+			font-size:1rem;
+            font-family:{font:Body};
+			margin:0px;
+            padding:0px;
+            text-align:left;
+		} a {
+            color:inherit;
+            font-style:normal;
+			text-decoration:underline;
+		} a:hover {
+		    font-style:italic;
+		    cursor:pointer;
+		} img#header {
+		    display:block;
+		    margin:0 auto;
+		} h1#header {
+		    font-family:{font:Titles};
+		    font-size:3rem;
+		    text-align:center;
+		}
+		hr.tumblrAutoPager_page_separator, div.tumblrAutoPager_page_info {
+		    display:none;
+		}
+		div.wrapper-in {
+		    margin:0 auto;
+		    max-width:600px;
+		    {block:ifMaximumPostWidth}max-width:{text:Maximum Post Width};{/block:ifMaximumPostWidth}
+		    padding:25px 12px;
+		} div.wrapper-in div.post-title {
+		    font-family:{font:Titles};
+		    font-size:2.2rem;
+		    font-weight:bold;
+		    margin-bottom:1rem;
+		} div.wrapper-in div.post-info {
+		    color:transparent;
+		    font-size:.7rem;
+		    text-align:center;
+		    text-transform:uppercase;
+		}div.wrapper-in blockquote {
+		    border-left:2px solid transparent;
+		    padding-left:10px;
+		    margin-left:15px;
+		    margin-right:0;
+		} img.photo, div.video-player *, div.audio-player *, div.post-info, iframe {
+		    width:100%!important;
+		} .audio-player * {
+		    height:auto!important;
+		    margin:0 auto;
+		}
+
+		/* hide posts tagged "hidethis" */
+		div.wrapper-out.hidethis {
+		    display:none;
+		}
+
+		div#tags {
+		    {block:IndexPage}{block:ifNotShowTagsOnIndexPages}display:none;{/block:ifNotShowTagsOnIndexPages}{/block:IndexPage}
+		    padding-top:0.5rem;
+		}
+		ol.notes {list-style-type:none;}
+		ol.notes img {margin-right:5px;}
+
+
+		div.chat-line {
+		    margin-bottom:1rem;
+		}
+		span.chat-label {
+		    font-weight:bold;
+		}
+
+		div.wrapper-out.quote div.quote{
+		    font-family:{font:Titles};
+		    font-size:1.5rem;
+		    font-weight:bold;
+		    margin-bottom:10px;
+		}
+		div.wrapper-out.answer div.question  {
+		    border-bottom:1px dashed transparent;
+		}
+		div.wrapper-out.answer:hover div.question, div.wrapper-out.answer.perma div.question  {
+		    border-bottom-color:{color:Text Rollover Color};
+		}
+		div.wrapper-out:hover blockquote, div.wrapper-out.perma blockquote {
+		    border-left-color:{color:Text Rollover Color};
+		}
+
+
+
+		/*roll-over colors*/
+		div.wrapper-out:hover, div.wrapper-out.perma {
+		    color:{color:Text Rollover Color};
+		    background:{color:Fallback Post Background};
+		}
+		div.wrapper-out:hover div.post-info, div.wrapper-out.perma div.post-info { color:{color:Text Rollover Color}; }
+
+		{block:IfHeaderImage}div#header {
+		    background:{color:Header Background};
+		    {block:ifTransparentHeaderBackground}
+		        background:transparent;
+		    {/block:ifTransparentHeaderBackground}
+		    padding:20px 0;
+		}{/block:IfHeaderImage}
+
+		{block:IfFadeTransitions}div.wrapper-out:hover, div.wrapper-out {
+		    -webkit-transition: background 0.4s linear, color 0.2s linear;
+            -moz-transition: background 0.4s linear, color 0.2s linear;
+            -o-transition:background 0.4s linear, color 0.2s linear;
+            transition: background 0.4s linear, color 0.2s linear;
+		}{/block:IfFadeTransitions}
+
+		{block:IfRolloverColorByPostType}
+		    div.wrapper-out.text:hover, div.wrapper-out.text.perma { background:{color:Text Post Background}; }
+		    div.wrapper-out.photo:hover, div.wrapper-out.photo.perma { background:{color:Photo Post Background}; }
+		    div.wrapper-out.quote:hover, div.wrapper-out.quote.perma { background:{color:Quote Post Background}; }
+		    div.wrapper-out.link:hover, div.wrapper-out.link.perma { background:{color:Link Post Background}; }
+		    div.wrapper-out.chat:hover, div.wrapper-out.chat.perma { background:{color:Chat Post Background}; }
+		    div.wrapper-out.audio:hover, div.wrapper-out.audio.perma { background:{color:Audio Post Background}; }
+		    div.wrapper-out.video:hover, div.wrapper-out.video.perma { background:{color:Video Post Background}; }
+		   div.wrapper-out.answer:hover, div.wrapper-out.answer.perma { background:{color:Answer Post Background}; }
+		{/block:IfRolloverColorByPostType}
+
+		{block:IfRolloverColorByReblog}
+		    div.wrapper-out.reblog:hover, div.wrapper-out.reblog.perma { background:{color:Reblog Post Background}; }
+		{/block:IfRolloverColorByReblog}
+
+		{block:IfSpecialTagName}
+		    div.wrapper-out.{text:Special Tag Name}:hover, div.wrapper-out.{text:Special Tag Name}.perma { background:{color:Special Tag Background}; }
+		{/block:IfSpecialTagName}
+
+		{block:IfKeepBackgroundOfPostsWithYourSpecialTagOpaque}
+		    div.wrapper-out.{text:Special Tag Name}, div.wrapper-out.{text:Special Tag Name}:hover, div.wrapper-out.{text:Special Tag Name}.perma { background:{color:Special Tag Background}; }
+		{/block:IfKeepBackgroundOfPostsWithYourSpecialTagOpaque}
+
+
+		/* a div walks into a bar */
+		div.autopagerize_page_element {
+		    margin-bottom:2.4rem;
+		}
+		div#bar{
+		    background-color:{color:Bar Background};
+		    font-family:{font:Bar};
+		    position:fixed;
+		    padding:.5rem 0 0 0;
+		    width:100%;
+		    /*height:2rem;*/
+		    bottom:0;
+		    z-index:100;
+		    text-align:center;
+		    text-transform:lowercase;
+		}
+		div#bar span{
+		    background-color:{color:General Background};
+			color:{color:Text Color};
+		    display:inline-block;
+		    vertical-align:top;
+		    padding:.2rem .5rem;
+		    margin:0 0 .5rem 0;
+		}
+		div#bar div#description {
+		    max-width:600px;
+		    {block:ifMaximumPostWidth}max-width:{text:Maximum Post Width};{/block:ifMaximumPostWidth}
+		    text-transform:none;
+		    margin:0 auto;
+		    display:none;
+		}
+
+		{CustomCSS}
+
+	</style>
+	<!--<script type="text/javascript" src="http://static.tumblr.com/nsrxbhx/jCTmy67zh/jquery-1.10.2.min.js"></script>-->
+<script type="text/javascript" src="http://static.tumblr.com/q0etgkr/mFbkoqlkr/tumblrautopager.js"></script>
+	<script type="text/javascript">
+
+	    function toggle(divname) {
+	        var div = document.getElementById(divname);
+	        if (div.style.display == "block")
+	            div.style.display = "none";
+	       else div.style.display = "block";
+	    }
+    </script>
+
+</head>
+<body>
+<div id="bar">
+        <span id='home'><a href='/'>{lang:Home}</a></span>
+
+    {block:Description}<span id='about'><a onclick="toggle('description')">{lang:About}</a></span>{/block:Description}
+
+    {block:HasPages}
+        {block:Pages}<span class='page'><a href='{URL}'>{Label}</a></span> {/block:Pages}
+
+    {/block:HasPages}
+    {block:AskEnabled}<span class='ask-link'><a href='/ask'>?????</a></span>{/block:AskEnabled}
+    {block:SubmissionsEnabled}<span class='submit-link'><a href='/submit'>Submit</a></span>{/block:SubmissionsEnabled}
+
+    {block:Description}<div id='description'><span>{Description}</span></div>{/block:Description}
+
+</div>
+
+    <div id='header'><a href='/'>{block:IfHeaderImage}<img id='header' src='{image:Header}'/>{/block:IfHeaderImage}
+
+    </a>
+        <h1 id='header'>{Title}</h1>
+    </div>
+
+<div class="autopagerize_page_element">
+{block:Posts}
+<div class="{PostType} {TagsAsClasses} wrapper-out {block:PermalinkPage}perma{/block:PermalinkPage}">
+<div class="wrapper-in">
+    {block:Text}
+        {block:Title}
+            <div class='post-title'>{Title}</div>
+        {/block:Title}
+        {Body}
+    {/block:Text}
+
+    {block:Photo}
+        {LinkOpenTag}<img class='photo' src='{PhotoURL-HighRes}' alt='{PhotoAlt}'/>{LinkCloseTag}
+        {block:Caption}{Caption}{/block:Caption}
+    {/block:Photo}
+
+    {block:Photoset}
+        {Photoset}
+        {block:Caption}{Caption}{/block:Caption}
+    {/block:Photoset}
+
+    {block:Quote}
+        <div class='quote'>&ldquo;{Quote}&rdquo;</div>
+        {block:Source}<div class='quote-source'>&mdash;{Source}</div>{/block:Source}
+    {/block:Quote}
+
+    {block:Link}
+        <div class='post-title'><a href={URL} class='link' {target}>{Name}</a></div>
+        {block:Description}{Description}{/block:Description}
+    {/block:Link}
+
+    {block:Chat}
+        {block:Title}
+            <div class='post-title'>{Title}</div>
+        {/block:Title}
+        {block:Lines}
+            <div class='chat-line chat-user{UserNumber}'>
+            {block:Label}<span class='chat-label'>{Label} </span>{/block:Label}
+            {Line}
+            </div>
+        {/block:Lines}
+    {/block:Chat}
+
+    {block:Audio}
+        <div class='audio-player'>
+            {block:AudioEmbed}{AudioEmbed}{/block:AudioEmbed}
+            {block:AudioPlayer}{AudioPlayer}{/block:AudioPlayer}
+        </div>
+        {block:Caption}{Caption}{/block:Caption}
+    {/block:Audio}
+
+    {block:Video}
+        <div class='video-player'>{VideoEmbed-700}</div>
+        {block:Caption}{Caption}{/block:Caption}
+    {/block:Video}
+
+    {block:Answer}
+    <div class='question'>
+        <div class='asker'>{Asker}:</div>
+        {Question}
+    </div>
+    {block:Answerer}<div class='answerer'>{Answerer}</div>{/block:Answerer}
+    {Replies}
+    {/block:Answer}
+
+
+    <div class='post-info'>
+        {block:Date}<span>{DayOfMonth} {ShortMonth} {Year} ({block:IndexPage}<a href="{Permalink}">{/block:IndexPage}{12Hour}:{Minutes} {AmPm}{block:IndexPage}</a>{/block:IndexPage}) </span> {/block:Date}
+        {block:NoteCount}<span>{NoteCountWithLabel} </span>{/block:NoteCount}
+        {block:HasTags}<div id='tags'>
+            {block:Tags}<span><a href='{TagURL}'>&#35;{Tag}</a> </span>{/block:Tags}
+        </div>{/block:HasTags}
+    </div>
+</div>
+</div>
+{/block:Posts}
+{block:PostNotes}
+    <div class='wrapper-in'>{PostNotes}</div>
+{/block:PostNotes}
+</div>
+</body>
+</html>
