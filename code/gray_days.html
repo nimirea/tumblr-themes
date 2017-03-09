@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+	<link rel="shortcut icon" href="{Favicon}" />
+        <link rel="alternate" type="application/rss+xml" href="{RSS}">
+
+	{block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
+
+	<title>
+	{Title}
+	{block:PostTitle}: {PostTitle}{/block:PostTitle}
+	{block:TagPage}: {Tag}{/block:TagPage}
+	</title>
+
+
+
+
+	<style type="text/css" media="screen">
+		body {
+			font-family:Helvetica, Helvetica Neue, Geneva, Arial, sans-serif;
+			background: #F7F7F7;
+		} #wrapper {
+			margin:0 auto;
+			width:800px;
+		} .centerme {
+			text-align:center;
+			margin-left:auto;
+			margin-right:auto;
+		} a {
+			color:#323232;
+			text-decoration:none;
+		} h1 {
+			color:#DCDCDC;
+			font-size:175px;
+			font-family:Palatino, Georgia, "Times New Roman", Times, serif;
+			font-weight:normal;
+			text-align:center;
+			z-index:-100;
+			margin:20px 0px 20px 0px;
+			line-height:140px;
+			text-transform:lowercase;
+		} h2 {
+			font-family:Palatino, Georgia, "Times New Roman", Times, serif;
+			color:#747474;
+			font-size:50px;
+			line-height:50px;
+			font-weight:bold;
+			font-style:italic;
+			z-index:0;
+			text-align:center;
+			margin:0px;
+		} h3 {
+			font-size:35px;
+			letter-spacing:-1px;
+			text-align:left;
+			font-weight:bold;
+			line-height:35px;
+			margin:0px;
+			display:inline;
+			color:#323232;
+		} p.datetime {
+			color:#747474!important;
+			font-size:18px;
+			font-family:Courier, Courier New, American Typewriter, Monaco;
+			text-align:right;
+			line-spacing:18px;
+			text-align:right;
+		} .posts a {
+			text-decoration:underline;
+		} .posts {
+			margin-top:5px;
+			margin-bottom:20px;
+			padding:35px;
+			background-color:#DCDCDC;
+		} .posts li {
+			margin-top:13.5px;
+			margin-bottom:13.5px;
+		} img  {
+			display:block;
+			margin-left:auto;
+			margin-right:auto;
+			margin-bottom: 35px;
+			border:solid 10px #F7F7F7;
+	 	} ol.notes li.note img.avatar {display:none;
+		} .text {
+			font-size:18px;
+			color:#323232;
+			text-align:left;
+			line-height:1.5;
+		} h2.quote {
+			color:#323232;
+			text-align:left;
+			margin-bottom:20px;
+		} #footer {
+			color:#747474;
+			font-size: 18px;
+			z-index:100;
+			text-transform:lowercase;
+			text-align:center;
+			margin-top:65px;
+		} .source, ol.notes li.note {
+			font-size:14px;
+			color:#747474;
+			text-align:right;
+			margin-top:0px;
+		} ol.notes li.note{
+			text-align:left;
+			padding-top:5px;
+		} ol.notes {
+			background-color:#DCDCDC;
+			padding:35px!important;
+			list-style-type:none;
+		} .nav {
+			color:#323232;
+			padding-left:0;
+			margin-left:0;
+			margin-top:65px;
+			text-align:center;
+		} .nav li {
+			display:inline;
+			padding:10px!important;
+			background-color:#DCDCDC;
+			text-align:center;
+			line-height:2.5;
+		} #rss:hover {border-top:10px solid #FF831F;
+		} #ask:hover {border-top:10px solid #6EC054;
+		} #pagelink:hover {border-top:10px solid #CB53DF;
+		} #archive:hover {border-top:10px solid #4A95EF;}
+
+		{CustomCSS}
+
+	</style>
+
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<body><div id="wrapper"><a href="/"><h1>{Title}</h1></a>
+
+
+
+{block:TagPage}
+	<h2>*{Tag}</h2>
+{/block:TagPage}
+
+
+{block:SearchPage}
+	<h3>we found {SearchResultCount} post(s) that matched your query.</h3>
+{/block:SearchPage}
+{block:NoSearchResults}
+	<h3></br> c'est la vie.</h3>
+{/block:NoSearchResults}
+
+
+{block:Posts}
+	{block:Text}
+	<div class="posts">
+		<div class="post title">
+		{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}{block:Title}
+			<h3>{Title}</h3>
+		{/block:Title}
+		</div>
+		<div class="text">{Body}</div>
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Text}
+
+	{block:Photo}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+		{block:Caption}
+			<div class="text">{Caption}</div><div class="source">
+			{block:HighRes}(see in <a href="{PhotoURL-HighRes}">high-res</a>){/block:HighRes}
+			</div>
+		{/block:Caption}
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Photo}
+
+
+	{block:Photoset}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		<div class="
+">{Photoset-500}</div>
+		{block:Caption}
+			<div class="text">{Caption}
+			</div>
+		{/block:Caption}
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Photoset}
+
+
+	{block:Quote}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		<h2 class="quote">{Quote}</h2>
+		{block:Source}
+			<div class="source">{Source}
+			</div>
+		{/block:Source}
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Quote}
+
+
+	{block:Link}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		<h3>&rarr; <a href="{URL}" {Target}>{Name}</a></h3>
+		{block:Description}
+			<div class="text">{Description}
+			</div>
+		{/block:Description}
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Link}
+
+
+	{block:Audio}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		<div class="centerme">{AudioPlayerWhite}</div>
+		<div class="source">
+			<p>{block:TrackName}"{TrackName}"{/block:Trackname}{block:Artist} by {Artist}{/block:Artist}</p></div>
+		<div class="text">
+			{block:Caption}
+				{Caption}
+			{/block:Caption}
+		</div>
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Audio}
+
+
+	{block:Video}
+	<div class="posts">
+		<div class="post title">{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}</div>
+		<div class="centerme">{Video-500}</div>
+		{block:Caption}
+			<div class="text">{Caption}
+			</div>
+		{/block:Caption}
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Video}
+
+
+
+
+	{block:Chat}
+	<div class="posts">
+		<div class="post title">
+		{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}{block:Title}
+			<h3>{Title}</h3>
+		{/block:Title}
+		</div>
+		<div class="text">
+			{block:Lines}
+					<p>{block:Label}<strong>{Label}</strong>{/block:Label}
+				{Line}</p>
+			{/block:Lines}
+		</div>
+		{block:RebloggedFrom}<div class="source"><p>// from <a href="{ReblogRootURL}">{ReblogRootName}</a></p></div>{/block:RebloggedFrom}
+	</div>
+	{/block:Chat}
+
+	{block:Answer}
+	<div class="posts">
+		<div class="post title">
+		{block:Date}
+			<p class="datetime">[<a href="{Permalink}">{DayOfMonthWithZero}{MonthNumberWithZero}{ShortYear}.{24HourWithZero}{Minutes}</a>]</p>
+		{/block:Date}
+			<h3>"{Question}"</h3>
+			<div class="source">from {Asker}</div>
+			<div class="text">{Answer}</div>
+	</div>
+	{/block:Answer}
+
+
+
+
+
+{/block:Posts}
+
+{block:PostNotes}
+	<h2>*reactions</h2>
+{PostNotes}
+{/block:PostNotes}
+
+
+
+
+
+
+
+
+{block:Pagination}
+	<ul class="nav">
+		{block:NextPage}<li><a href="{NextPage}">&larr;</a></li>{/block:NextPage}
+		{block:PreviousPage}<li><a href="{PreviousPage}">&rarr;</a></li>{/block:PreviousPage}
+	</ul>
+{/block:Pagination}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer">
+		<p>{block:Description}{Description}{/block:Description}</p>
+		<p><form action="/search" method="get">
+    			<input type="text" name="q" value="{SearchQuery}"/>
+   			 <input type="submit" value="let's find it!"/>
+		</form></p>
+		<ul class="nav">
+			<li id="rss"><a href="{RSS}">rss feed</a></li>
+			{block:HasPages}
+			{block:Pages}<li id="pagelink"><a href="{URL}">{Label}</a></li>{/block:Pages}
+			{/block:HasPages}
+			<li id="archive"><a href="/archive">archive</a></li>
+			{block:AskEnabled}<li id="ask"><a href="/ask">?</a></li>{/block:AskEnabled}
+		</ul>
+		<p>{this blog uses the theme <a href="http://tumblr.com/theme/9564">gray days</a>, designed by <a href="http://nimirea.tumblr.com/">nimirea</a>.}</p>
+
+</div>
+</div>
+
+</body>
+
+</html>
